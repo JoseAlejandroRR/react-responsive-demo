@@ -27,7 +27,6 @@ function Home() {
   useEffect(() => {
     let mounted = true;
     apiGetUsers().then((items) => {
-      console.log(items);
       if (mounted) {
         setUsers(items);
       }
@@ -38,7 +37,7 @@ function Home() {
   return (
     <div className="App">
       <h2>Top Five Github Users</h2>
-      <h4>Tab for see more info</h4>
+      <h4>Tab the username see more information</h4>
 
       {users.map((item) => (
         <Link
@@ -55,16 +54,12 @@ function Home() {
 }
 
 function UserProfile(props) {
-  console.log("props");
-
   const nickname = props.match.params.nickname;
 
   const [user, setUser] = useState({});
   useEffect(() => {
     let mounted = true;
-    console.log(nickname);
     apiGetUserByNickname(nickname).then((data) => {
-      console.log(data);
       if (mounted) {
         setUser(data);
       }
